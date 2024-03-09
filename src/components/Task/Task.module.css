@@ -1,0 +1,56 @@
+.taskContainer {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 24px 24px 48px;
+	width: calc(100% / 3 - 70px);
+	min-height: 120px;
+	border: 1px solid var(--color6);
+	border-radius: 8px;
+	background: var(--color5);
+	color: var(--color3);
+}
+
+.taskContainer[contenteditable] {
+	background: red;
+}
+
+.taskNum {
+	margin: 0;
+	color: var(--color2);
+}
+
+.taskTitle {
+	color: var(--color3);
+}
+
+.completeButton {
+	position: absolute;
+	align-self: flex-end;
+	border: none;
+	padding: 8px 16px;
+	border-radius: 6px 0;
+	width: fit-content;
+	bottom: 0;
+	right: 0;
+	font-weight: 600;
+	font-family: 'Segoe UI', sans-serif;
+	font-size: 0.9rem;
+	cursor: pointer;
+	transition: 0.15s;
+}
+
+.completeButton:hover {
+	filter: brightness(1.1);
+}
+
+.inProgress {
+	background: var(--color4);
+	color: var(--color3);
+}
+
+.done {
+	background: var(--color6);
+	color: var(--color5);
+}

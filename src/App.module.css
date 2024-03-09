@@ -1,0 +1,40 @@
+.todoUsers {
+	height: 32px;
+	outline: none;
+	border-radius: 8px;
+	padding: 0 4px;
+}
+
+.todoTitle {
+	position: sticky;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+	top: 0;
+	margin: 0;
+	height: 80px;
+	width: 100%;
+	background: #001f2ddd;
+	backdrop-filter: blur(16px);
+	text-align: center;
+	color: #008fd4;
+	z-index: 999;
+}
+
+.todoTitle > span {
+	display: block;
+	padding-bottom: 6px;
+}
+
+.taskList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 16px;
+	align-items: stretch;
+	align-content: center;
+	width: 80vw;
+	word-wrap: break-word;
+	margin: 12px 0 48px;
+}

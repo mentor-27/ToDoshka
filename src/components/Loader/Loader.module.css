@@ -1,0 +1,39 @@
+.shapes {
+	position: absolute;
+	top: 50%;
+	width: 80px;
+	height: 80px;
+	color: var(--color6);
+	display: grid;
+}
+
+.shapes::before,
+.shapes::after {
+	content: '';
+	grid-area: 1/1;
+	background: currentColor;
+	clip-path: polygon(0 0, 50% 50%, 0 100%);
+	animation: shapes-gkmo0z 2s infinite;
+}
+
+.shapes::after {
+	animation-delay: -1.5s;
+	--s: 90deg;
+}
+
+@keyframes shapes-gkmo0z {
+	0%,
+	12.5% {
+		transform: rotate(var(--s, 0deg)) rotate(0deg);
+	}
+
+	37.5%,
+	62.5% {
+		transform: rotate(var(--s, 0deg)) rotate(-180deg);
+	}
+
+	87.5%,
+	100% {
+		transform: rotate(var(--s, 0deg)) rotate(-360deg);
+	}
+}
