@@ -62,7 +62,7 @@ export const Task = ({ id, title, description, done, refresh }) => {
 
 const TaskLayout = props => {
 	return (
-		<div className={styles.taskContainer} data-id={props.id}>
+		<div className={styles.taskContainer}>
 			<div>
 				<input
 					className={styles.taskTitle}

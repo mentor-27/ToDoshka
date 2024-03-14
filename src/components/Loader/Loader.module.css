@@ -13,7 +13,7 @@
 	grid-area: 1/1;
 	background: currentColor;
 	clip-path: polygon(0 0, 50% 50%, 0 100%);
-	animation: shapes-gkmo0z 2s infinite;
+	animation: shapes 2s infinite;
 }
 
 .shapes::after {
@@ -21,7 +21,7 @@
 	--s: 90deg;
 }
 
-@keyframes shapes-gkmo0z {
+@keyframes shapes {
 	0%,
 	12.5% {
 		transform: rotate(var(--s, 0deg)) rotate(0deg);
