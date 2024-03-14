@@ -5,6 +5,12 @@
 	--color4: #ccc;
 	--color5: #eee;
 	--color6: #008fd4;
+	--color7: #d92626;
+	--color8: #14b822;
+}
+
+* {
+	box-sizing: border-box;
 }
 
 body {

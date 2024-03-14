@@ -1,0 +1,107 @@
+.modalOverlay {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	inset: 0;
+	background: #0004;
+	backdrop-filter: blur(16px);
+	z-index: 999;
+}
+
+.modalWindow {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 400px;
+	height: fit-content;
+	padding: 16px;
+	border-radius: 8px;
+	background: var(--color5);
+}
+
+.modalHeader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	width: 90%;
+	margin-bottom: 8px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #0002;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.modalContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.form {
+	width: 100%;
+}
+
+.inputLabel {
+	display: block;
+	margin-bottom: 4px;
+	padding-left: 8px;
+}
+
+.formInput {
+	height: 36px;
+	border: 1px solid var(--color4);
+	border-radius: 8px;
+	padding-inline: 8px;
+	margin-bottom: 8px;
+	width: 100%;
+	outline: none;
+	font-family: system-ui, sans-serif;
+}
+
+.formTextArea {
+	border: 1px solid var(--color4);
+	border-radius: 8px;
+	height: 100px;
+	width: 100%;
+	padding: 8px;
+	font-family: system-ui, sans-serif;
+	outline: none;
+	resize: none;
+}
+
+.modalFooter {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 8px;
+	border-top: 1px solid #0002;
+	padding-top: 12px;
+	width: 95%;
+	margin-top: 8px;
+}
+
+.button {
+	border: none;
+	border-radius: 4px;
+	padding: 8px 16px;
+	cursor: pointer;
+	background: var(--color6);
+	color: var(--color5);
+	transition: 0.15s;
+}
+
+.button:hover {
+	filter: brightness(1.1);
+}
+
+.confirmButton {
+	background: var(--color6);
+}
+
+.cancelButton {
+	background: var(--color7);
+}
