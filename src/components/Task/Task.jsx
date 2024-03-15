@@ -1,19 +1,27 @@
 import { useState } from 'react';
 import styles from './Task.module.css';
-import { patchData, putData, deleteData } from '../../api';
 
-const createRemover = (id, refresh) => () => {
-	deleteData(id, refresh);
-};
-
-export const Task = ({ id, title, description, done, refresh }) => {
+export const Task = ({
+	id,
+	title,
+	description,
+	done,
+	putData,
+	patchData,
+	deleteData,
+}) => {
 	const [_title, setTitle] = useState(title);
 	const [_description, setDescription] = useState(description);
 	const [isEditing, setIsEditing] = useState({ bool: false, sign: 'Edit' });
 
+	const createRemover = id => () => {
+		deleteData(id);
+	};
+
 	const onTitleChange = ({ target }) => {
 		setTitle(target.value);
 	};
+
 	const onDescriptionChange = ({ target }) => {
 		setDescription(target.value);
 		target.style.height = `${target.scrollHeight + 1.5}px`;
@@ -23,32 +31,26 @@ export const Task = ({ id, title, description, done, refresh }) => {
 		const signs = ['Edit', 'Save'];
 		setIsEditing({ bool: !isEditing.bool, sign: signs[Number(!isEditing.bool)] });
 		if (isEditing.bool && _title) {
-			putData(
-				id,
-				{
-					title: _title,
-					description: _description,
-					done,
-				},
-				refresh,
-			);
+			putData(id, {
+				title: _title,
+				description: _description,
+			});
 		} else if (isEditing.bool && !_title) {
 			alert('Task title must be set!');
 		}
 	};
 
 	const updateStatus = () => {
-		patchData(id, !done, refresh);
+		patchData(id, { done: !done });
 	};
 
-	const deleteItem = createRemover(id, refresh);
+	const deleteItem = createRemover(id);
 
 	const props = {
 		id,
 		_title,
 		_description,
 		done,
-		refresh,
 		isEditing,
 		onTitleChange,
 		onDescriptionChange,

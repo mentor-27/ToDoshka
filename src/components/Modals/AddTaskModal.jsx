@@ -1,23 +1,23 @@
-import { postData } from '../../api';
 import styles from './AddTaskModal.module.css';
 
-export const AddTaskModal = ({ showModal, refresh }) => {
+export const AddTaskModal = ({ showModal, postData }) => {
 	const onSubmit = e => {
 		e.preventDefault();
 		const { target } = e;
-		postData(
-			{
-				title: target.elements.title.value,
-				description: target.elements.description.value,
-				done: false,
-			},
-			refresh,
-		);
+		postData({
+			title: target.elements.title.value.trim(),
+			description: target.elements.description.value.trim(),
+			done: false,
+		});
+		showModal(false);
+	};
+
+	const closeModal = () => {
 		showModal(false);
 	};
 
 	return (
-		<div className={styles.modalOverlay} onClick={() => showModal(false)}>
+		<div className={styles.modalOverlay} onClick={closeModal}>
 			<div className={styles.modalWindow} onClick={e => e.stopPropagation()}>
 				<div className={styles.modalHeader}>Add new task</div>
 				<div className={styles.modalContent}>
@@ -55,7 +55,7 @@ export const AddTaskModal = ({ showModal, refresh }) => {
 					</button>
 					<button
 						className={`${styles.button} ${styles.cancelButton}`}
-						onClick={() => showModal(false)}
+						onClick={closeModal}
 					>
 						Cancel
 					</button>
