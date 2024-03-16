@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Task } from './components';
 import styles from './App.module.css';
 import { Loader, AddTaskModal } from './components';
-import { useDeleteData, useGetData, usePostData, usePutData } from './hooks';
-import { usePatchData } from './hooks/usePatchData';
+import { useGetData, usePostData } from './hooks';
 
 export const App = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -15,9 +14,6 @@ export const App = () => {
 
 	const { todos } = useGetData(sorted, filter, setIsLoading, setConnectionError);
 	const { postData } = usePostData(setIsLoading, setConnectionError);
-	const { putData } = usePutData(setIsLoading, setConnectionError);
-	const { patchData } = usePatchData(setIsLoading, setConnectionError);
-	const { deleteData } = useDeleteData(setIsLoading, setConnectionError);
 
 	const refreshList = () => setRefresh(!refresh);
 
@@ -25,6 +21,7 @@ export const App = () => {
 		isLoading,
 		todos,
 		connectionError,
+		setConnectionError,
 		addModal,
 		setAddModal,
 		refreshList,
@@ -33,9 +30,6 @@ export const App = () => {
 		filter,
 		setFilter,
 		postData,
-		putData,
-		patchData,
-		deleteData,
 	};
 
 	return <AppLayout {...props} />;
@@ -80,9 +74,7 @@ const AppLayout = props => {
 								key={key}
 								id={key}
 								{...task}
-								putData={props.putData}
-								patchData={props.patchData}
-								deleteData={props.deleteData}
+								setConnectionError={props.setConnectionError}
 							/>
 						))) || (
 						<h2>

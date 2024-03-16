@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import styles from './Task.module.css';
+import { TaskLoader } from '../Loader/TaskLoader';
+import { useDeleteData, usePatchData, usePutData } from '../../hooks';
 
-export const Task = ({
-	id,
-	title,
-	description,
-	done,
-	putData,
-	patchData,
-	deleteData,
-}) => {
+export const Task = ({ id, title, description, done, setConnectionError }) => {
 	const [_title, setTitle] = useState(title);
 	const [_description, setDescription] = useState(description);
+	const [isTaskLoading, setIsTaskLoading] = useState(false);
+	const { putData } = usePutData(setIsTaskLoading, setConnectionError);
+	const { patchData } = usePatchData(setIsTaskLoading, setConnectionError);
+	const { deleteData } = useDeleteData(setIsTaskLoading, setConnectionError);
 	const [isEditing, setIsEditing] = useState({ bool: false, sign: 'Edit' });
 
 	const createRemover = id => () => {
@@ -52,6 +50,7 @@ export const Task = ({
 		_description,
 		done,
 		isEditing,
+		isTaskLoading,
 		onTitleChange,
 		onDescriptionChange,
 		updateData,
@@ -107,6 +106,7 @@ const TaskLayout = props => {
 					</button>
 				</div>
 			</div>
+			{props.isTaskLoading ? <TaskLoader /> : null}
 		</div>
 	);
 };

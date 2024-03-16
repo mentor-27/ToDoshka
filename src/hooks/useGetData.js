@@ -24,10 +24,10 @@ export const useGetData = (sorted, filter, setIsLoading, setConnectionError) => 
 					);
 
 				setTodos(actualData);
+				setIsLoading(false);
 			});
 		} catch (error) {
 			setConnectionError(error.message);
-		} finally {
 			setIsLoading(false);
 		}
 	}, [sorted, debFilter]);

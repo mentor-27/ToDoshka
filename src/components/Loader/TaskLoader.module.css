@@ -1,0 +1,24 @@
+.tlContainer {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	inset: 0;
+	background: #001f2d88;
+}
+
+.cssloadSpeedingWheel {
+	width: 69px;
+	height: 69px;
+	margin: 0 auto;
+	border: 4px solid #008fd4;
+	border-radius: 50%;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	animation: cssload-spin 300ms infinite linear;
+}
+
+@keyframes cssload-spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}

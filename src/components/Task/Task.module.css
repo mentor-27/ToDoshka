@@ -12,6 +12,7 @@
 	border-radius: 8px;
 	background: var(--color5);
 	color: var(--color3);
+	overflow: hidden;
 }
 
 .taskTitle {

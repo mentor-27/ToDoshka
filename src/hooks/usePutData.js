@@ -1,16 +1,17 @@
 import { ref, set } from 'firebase/database';
 import { db } from '../firebase';
 
-export const usePutData = (setIsLoading, setConnectionError) => {
+export const usePutData = (setIsTaskLoading, setConnectionError) => {
 	const putData = (id, data) => {
-		setIsLoading(true);
-
+		setIsTaskLoading(true);
 		const dbRef = ref(db, `todos/${id}`);
 
 		set(dbRef, data)
-			.then(() => setConnectionError(''))
+			.then(() => {
+				setConnectionError('');
+			})
 			.catch(error => setConnectionError(error.message))
-			.finally(() => setIsLoading(false));
+			.finally(() => setIsTaskLoading(false));
 	};
 
 	return {
